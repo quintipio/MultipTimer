@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="MultiCaRWin10.Views.GererTimer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock x:Name="NomAppliTextBlock" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock x:Name="NomPageTextBlock" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" FontSize="30" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="20,9.833,20,0" VerticalAlignment="Top" Height="283" MaxWidth="600">
+            <TextBlock x:Uid="TextBlockTitre"  Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
+            <TextBox x:Name="TitreCaRTextBox" Margin="10,39,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="1"/>
+            <TextBlock x:Uid="TextBlockTemps" Margin="10,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
+            <TextBox x:Name="HeureCaRTextBox" TabIndex="2" HorizontalAlignment="Left" Margin="10,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" InputScope="Number" MaxLength="7"/>
+            <TextBox x:Name="MinuteCaRTextBox" TabIndex="3" HorizontalAlignment="Center" Margin="0,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.041,0.543" InputScope="Number"/>
+            <TextBox x:Name="SecondeCaRTextBox" TabIndex="4" HorizontalAlignment="Right" Margin="0,119,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" InputScope="Number"/>
+            <TextBlock HorizontalAlignment="Left" Margin="80,125,0,0" TextWrapping="Wrap" Text="h" VerticalAlignment="Top" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Center" Margin="80,125,0,0" TextWrapping="Wrap" Text="m" VerticalAlignment="Top" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,125,10,0" TextWrapping="Wrap" Text="s" VerticalAlignment="Top" FontSize="20"/>
+
+            <AppBarButton x:Name="ValidCaRButton" TabIndex="5" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Icon="Accept" Click="ValidCaRButton_OnClick"/>
+            <AppBarButton x:Name="AnnulerCaRButton" TabIndex="6" HorizontalAlignment="Right" Margin="0,199,10,0" VerticalAlignment="Top" Icon="Clear" Click="AnnulerCaRButton_OnClick"/>
+        </Grid>
+    </Grid>
+</Page>

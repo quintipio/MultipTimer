@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="MultiCaRWin10.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush Stretch="Uniform" ImageSource="Assets/icon.png" Opacity="0.25"/>
+    </Page.Background>
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre -->
+        <Grid Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock x:Name="AppNomAppTextBlock" Style="{ThemeResource TitleTextBlockStyle}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock x:Uid="appdText" Margin="50,30,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <AppBarButton x:Name="BackBarButton" HorizontalAlignment="Left" Icon="Back" Label="" VerticalAlignment="Top" Width="Auto" Height="59" Margin="15,30,0,0" Click="BackBarButton_Click"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1"  Margin="19,9.5,19,0">
+            <StackPanel >
+                <TextBlock x:Uid="VersionText" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="#FF999999"/>
+                <TextBlock x:Name="VersionTextBlock" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock x:Uid="DeveloppeurText" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="#FF999999"/>
+                <TextBlock x:Name="DeveloppeurTextBlock" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock x:Uid="NouveautesText" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="#FF999999"/>
+                <TextBlock x:Uid="NouveautesContenu" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="280"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
