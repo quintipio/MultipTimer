@@ -15,17 +15,17 @@ namespace MultiCaRWin10.Context
         /// <summary>
         /// adresse de support
         /// </summary>
-        public const string Support = "xxxxx@xxx.xx";
+        public const string Support = "XXXX@XX.XX";
 
         /// <summary>
         /// version de l'application
         /// </summary>
-        public const string Version = "2.0.1";
+        public const string Version = "2.2.0";
 
         /// <summary>
         /// nom du développeur
         /// </summary>
-        public const string Developpeur = "XXXXXXX";
+        public const string Developpeur = "XXXX";
 
         /// <summary>
         /// le nom par défaut du fichier 

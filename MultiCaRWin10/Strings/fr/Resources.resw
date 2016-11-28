@@ -151,7 +151,11 @@
     <value>Developpeur :</value>
   </data>
   <data name="NouveautesContenu.Text" xml:space="preserve">
-    <value>Version 2.0.1 :
+    <value>Version 2.2 : 
+- Modifications graphiques
+- Modifications des titres des chronomètres
+
+Version 2.0.1 :
 - Ajout du portugais
 - Optimisation de l'application
 

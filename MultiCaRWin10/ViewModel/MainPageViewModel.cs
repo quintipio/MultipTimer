@@ -370,6 +370,27 @@ namespace MultiCaRWin10.ViewModel
             ListTimer.ListeChronos.Clear();
             await ListTimer.SaveFile();
         }
+
+        /// <summary>
+        /// Modifie le titre d'un chrono et de tous ses sous chronos
+        /// </summary>
+        /// <param name="chrono">le chrono dont le titre est à modifier</param>
+        public async Task ChangerNomChrono(Chrono chrono)
+        {
+            if (chrono == null) return;
+            ListTimer.ModifierTitreChrono(chrono,chrono.TitreTmp);
+            await ListTimer.SaveFile();
+            chrono.ModifTitreVisible = false;
+        }
+
+        /// <summary>
+        ///Modifie la vue pour afficher la partie de modification du titre du chrono
+        /// </summary>
+        /// <param name="chrono">le chrono dont le titre est à modifier</param>
+        public void OpenChangerNomChrono(Chrono chrono)
+        {
+            chrono.ModifTitreVisible = true;
+        }
         #endregion
     }
 }

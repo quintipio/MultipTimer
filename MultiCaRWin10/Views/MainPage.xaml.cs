@@ -173,6 +173,15 @@ namespace MultiCaRWin10.Views
             await ViewModel.SaveChrono(((Button)sender).Tag as Chrono);
         }
         #endregion
-        
+
+        private async void ModifTitreChrono_Click(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.ChangerNomChrono(((Button)sender).Tag as Chrono);
+        }
+
+        private void OpenModifTitre_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.OpenChangerNomChrono(((Button)sender).Tag as Chrono);
+        }
     }
 }

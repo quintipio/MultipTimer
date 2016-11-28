@@ -22,11 +22,11 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock x:Name="NomAppliTextBlock" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock x:Name="NomPageTextBlock" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" FontSize="30" TextWrapping="Wrap"/>
+            <TextBlock x:Name="NomAppliTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock x:Name="NomPageTextBlock"  Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" FontSize="30" TextWrapping="Wrap"/>
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="20,9.833,20,0" VerticalAlignment="Top" Height="283" MaxWidth="600">
+        <Grid Grid.Row="1"  VerticalAlignment="Top" Height="283" MaxWidth="600">
             <TextBlock x:Uid="TextBlockTitre"  Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
             <TextBox x:Name="TitreCaRTextBox" Margin="10,39,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="1"/>
             <TextBlock x:Uid="TextBlockTemps" Margin="10,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>

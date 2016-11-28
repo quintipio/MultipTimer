@@ -271,6 +271,29 @@ namespace MultiCaRWin10.Model
                 }
             }
         }
+
+        /// <summary>
+        /// Modifie le titre d'un chronomètre
+        /// </summary>
+        /// <param name="chrono">le chronomètre à modifier</param>
+        /// <param name="titre">le nouveau titre</param>
+        public void ModifierTitreChrono(Chrono chrono,string titre)
+        {
+            if (chrono.IsParent)
+            {
+                var liste = _listeChrono.Where(x => x.IdChrono == chrono.IdChrono).ToList();
+                foreach (var ch in liste)
+                {
+                    ch.Titre = titre;
+                    ch.TitreTmp = titre;
+                }
+            }
+            else
+            {
+                chrono.Titre = titre;
+                chrono.TitreTmp = titre;
+            }
+        }
         #endregion
 
         #region Sauvegarde et chargement du fichier

@@ -28,12 +28,24 @@ namespace MultiCaRWin10.Model
         /// </summary>
         [XmlElement("nbSecondes")]
         public long NbSecondes { get; set; }
+        
+
+        private string _titre;
 
         /// <summary>
         /// nom du timer
         /// </summary>
         [XmlElement("titre")]
-        public string Titre { get; set; }
+        public string Titre
+        {
+            get { return _titre; }
+
+            set
+            {
+                _titre = value;
+                OnPropertyChanged("Titre");
+            }
+        }
 
         /// <summary>
         /// indique si le compte à rebours est en pause

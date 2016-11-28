@@ -16,14 +16,13 @@ namespace MultiCaRWin10.Model
         /// </summary>
         [XmlElement("idChrono")]
         public int IdChrono { get; set; }
-
+        
         /// <summary>
         /// indique s c'est un chrono ou si un arret de chrono pour un compte tours
         /// </summary>
         [XmlElement("isCompteTours")]
         public bool IsParent { get; set; }
-
-
+        
         /// <summary>
         /// le temps de différence entre ce chrono et le précédent
         /// </summary>
@@ -35,6 +34,38 @@ namespace MultiCaRWin10.Model
         /// </summary>
         [XmlElement("affichNbSecondesDiff")]
         public bool AffichNbSecondesDiff { get; set; }
+
+        private string _titreTmp;
+
+        public string TitreTmp
+        {
+            get { return _titreTmp; }
+
+            set
+            {
+                _titreTmp = value;
+                OnPropertyChanged("TitreTmp");
+            }
+        }
+
+        [XmlIgnore]
+        private bool _modifTitreVisible;
+
+        /// <summary>
+        /// Indique si oui ou non le titre est affiché pour être modifié
+        /// </summary>
+
+        [XmlIgnore]
+        public bool ModifTitreVisible
+        {
+            get { return _modifTitreVisible; }
+
+            set
+            {
+                _modifTitreVisible = value;
+                OnPropertyChanged("ModifTitreVisible");
+            }
+        }
 
         /// <summary>
         /// indique si oui ou non il s'agit d'u chrono le plus rapide
@@ -56,14 +87,15 @@ namespace MultiCaRWin10.Model
                 }
             }
         }
-            
+
 
         /// <summary>
         /// Constructeur
         /// </summary>
         public Chrono()
         {
-            
+            ModifTitreVisible = false;
+            TitreTmp = "";
         }
 
         /// <summary>
@@ -74,6 +106,8 @@ namespace MultiCaRWin10.Model
         {
             IsParent = chrono.IsParent;
             IdChrono = chrono.IdChrono;
+            ModifTitreVisible = false;
+            TitreTmp = chrono.Titre;
         }
 
         /// <summary>

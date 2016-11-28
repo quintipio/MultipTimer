@@ -16,6 +16,7 @@
     </Page.BottomAppBar>
     <Page.Resources>
         <l:BoolToVisibilityConverter x:Key="Converter"/>
+        <l:BoolToVisibilityInvertConverter x:Key="InvertBoolConverter"/>
         <l:BoolToColorConverter x:Key="ConverterColor"/>
         <l:MilisecToStringConverter x:Key="Converterms"/>
     </Page.Resources>
@@ -29,74 +30,51 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="HeaderCaR">
-                <GridView ItemsSource="{x:Bind ViewModel.ListTimer.ListeCaR,Mode=OneWay}" Margin="0" >
+                <GridView ItemsSource="{x:Bind ViewModel.ListTimer.ListeCaR,Mode=OneWay}" >
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Name="CarGrid" Margin="0,0,0,0" Height="100" MinWidth="300" >
-                                <TextBlock Name="TitreCaRTextBlock" Text="{Binding Titre}" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.184,0.25" Margin="10,0,0,0" Height="49" FontSize="18" HorizontalAlignment="Left" Width="177"/>
-                                <TextBlock Name="TimeCaRTextBlock" Foreground="{Binding ColorTimer}" Text="{Binding TimeToAffich}"  HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" Width="177" FontSize="23"/>
-                                <AppBarButton x:Name="ResetButton" HorizontalAlignment="Right" Tag="{Binding}"  Margin="0,0,120,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="55" Width="62" Click="ResetButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="RepeatAll"/>
-                                    </AppBarButton.Icon>
+                            <Grid Name="CarGrid" MinWidth="300" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="TitreCaRTextBlock" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding Titre}" TextWrapping="Wrap" Margin="0" FontSize="24" VerticalAlignment="Center" MinWidth="177" HorizontalAlignment="Center"/>
+                                <TextBlock Name="TimeCaRTextBlock" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Foreground="{Binding ColorTimer}" Text="{Binding TimeToAffich}"  HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="23" VerticalAlignment="Center"/>
+
+                                <AppBarButton x:Name="ResetButton" Grid.Column="0" Grid.Row="2"  Click="ResetButton_Click" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="RepeatAll">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="ResetText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="EditButton" HorizontalAlignment="Right" Tag="{Binding}" Margin="0,0,120,0" VerticalAlignment="Bottom" RenderTransformOrigin="0,0" Height="55" Width="62" Click="EditButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="Edit"/>
-                                    </AppBarButton.Icon>
+
+                                <AppBarButton x:Name="EditButton" Grid.Column="0" Grid.Row="3" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EditButton_Click" Icon="Edit">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="EditText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="PauseButton" HorizontalAlignment="Right" Tag="{Binding}" Margin="0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="55" Width="62" Click="PauseButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="Stop"/>
-                                    </AppBarButton.Icon>
+                                <AppBarButton x:Name="PauseButton" Grid.Column="2" Grid.Row="2" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PauseButton_Click" Icon="Stop">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="PauseText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="PlayButton" HorizontalAlignment="Right" Tag="{Binding}" Margin="0,0,60,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="55" Width="62" Click="LectureButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="Play"/>
-                                    </AppBarButton.Icon>
+                                <AppBarButton x:Name="PlayButton" Grid.Column="1" Grid.Row="2" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="LectureButton_Click" Icon="Play">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="DemarrerText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="SupButton" HorizontalAlignment="Right" Tag="{Binding}" Margin="0" VerticalAlignment="Bottom" RenderTransformOrigin="0,0" Height="55" Width="62" Click="SupButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="Clear"/>
-                                    </AppBarButton.Icon>
+                                <AppBarButton x:Name="SupButton" Grid.Column="2" Grid.Row="3" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SupButton_Click" Icon="Clear">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="SupprimerText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="ValidButton" HorizontalAlignment="Right" Tag="{Binding}" Margin="0,0,60,0" VerticalAlignment="Bottom" RenderTransformOrigin="0,0" Height="55" Width="62" Click="ValidButton_Click">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
-                                    <AppBarButton.Icon>
-                                        <SymbolIcon RenderTransformOrigin="0.5,0.5" Symbol="Accept"/>
-                                    </AppBarButton.Icon>
+                                <AppBarButton x:Name="ValidButton" Grid.Column="1" Grid.Row="3" Tag="{Binding}" IsCompact="True" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ValidButton_Click" Icon="Accept">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="ValiderText"/>
                                     </ToolTipService.ToolTip>
@@ -110,47 +88,59 @@
                 <GridView  ItemsSource="{x:Bind ViewModel.ListTimer.ListeChronos,Mode=OneWay}" Margin="0">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="83" MinWidth="300" VerticalAlignment="Top" >
-                                <TextBlock x:Name="IdChronoTextBlock" Margin="0" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Text="{Binding IdChrono}" VerticalAlignment="Top" Height="35" FontSize="30" HorizontalAlignment="Left" Width="51"/>
-                                <TextBlock x:Name="TempsChronoTextBlock" Margin="56,0,0,0" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Text="{Binding TimeToAffich}" VerticalAlignment="Top" Height="35" FontSize="23"/>
-                                <TextBlock x:Name="TempsDiffTextBlock" Margin="80,0,0,0" Foreground="{Binding IsFastestTimer, Converter={StaticResource ConverterColor}}" TextWrapping="Wrap" Text="{Binding NbSecondesDiff, Converter={StaticResource Converterms}}" VerticalAlignment="Bottom" Height="35" FontSize="20" Visibility="{Binding AffichNbSecondesDiff, Converter={StaticResource Converter}}" />
-                                <AppBarButton x:Name="MemChronoButton" Tag="{Binding}" HorizontalAlignment="Right" Icon="Download" Margin="0,0,0,-10" Height="58" Width="65" VerticalAlignment="Bottom" Click="MemChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
+                            <Grid MinWidth="300" VerticalAlignment="Top" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="TitreAfficherTextBlock" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding Titre,Mode=TwoWay}" FontSize="24" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}"/>
+                                <AppBarButton x:Name="EditTitreButton" Grid.Row="0" Grid.Column="4" Icon="Edit" IsCompact="True" Width="50" Height="50" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}" Tag="{Binding}" Click="OpenModifTitre_Click">
+                                    <ToolTipService.ToolTip>
+                                        <TextBlock x:Uid="EditText"/>
+                                    </ToolTipService.ToolTip>
+                                </AppBarButton>
+
+                                <TextBox x:Name="TitreAfficherTextBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding TitreTmp,Mode=TwoWay}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" VerticalAlignment="Center"/>
+                                <AppBarButton x:Name="ModifTitreButton" Grid.Row="0" Grid.Column="4" Icon="Accept" IsCompact="True" Width="50" Height="50" Tag="{Binding}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" Click="ModifTitreChrono_Click">
+                                    <ToolTipService.ToolTip>
+                                        <TextBlock x:Uid="EditText"/>
+                                    </ToolTipService.ToolTip>
+                                </AppBarButton>
+
+                                <TextBlock x:Name="IdChronoTextBlock" Grid.Row="1" Grid.Column="0" Foreground="{Binding ColorTimer}" Text="{Binding IdChrono}" TextWrapping="Wrap" Height="35" FontSize="30" Width="51"/>
+                               
+                                <TextBlock x:Name="TempsChronoTextBlock" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Text="{Binding TimeToAffich}" VerticalAlignment="Center" Height="35" FontSize="23" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TempsDiffTextBlock" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="{Binding IsFastestTimer, Converter={StaticResource ConverterColor}}" TextWrapping="Wrap" Text="{Binding NbSecondesDiff, Converter={StaticResource Converterms}}" VerticalAlignment="Bottom" Height="35" FontSize="20" Visibility="{Binding AffichNbSecondesDiff, Converter={StaticResource Converter}}" />
+                                
+                                <AppBarButton x:Name="MemChronoButton" Tag="{Binding}" Grid.Row="2" Grid.Column="4" Icon="Download" Height="50" Width="50" IsCompact="True" Click="MemChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="LapText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="StartChronoButton" Tag="{Binding}" HorizontalAlignment="Center" Icon="Play" Margin="0,31,50,-10" Height="58" Width="65" VerticalAlignment="Bottom" Click="StartChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
+                                <AppBarButton x:Name="StartChronoButton" Tag="{Binding}" Grid.Row="2" Grid.Column="1" Icon="Play"  Height="50" Width="50" IsCompact="True" Click="StartChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="DemarrerText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="PauseChronoButton" Tag="{Binding}" HorizontalAlignment="Center" Icon="Pause" Margin="50,31,0,-10" Height="58" Width="65" VerticalAlignment="Bottom" Click="PauseChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
+                                <AppBarButton x:Name="PauseChronoButton" Tag="{Binding}" Icon="Pause" Grid.Row="2" Grid.Column="2" Height="50" Width="50" IsCompact="True" Click="PauseChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="PauseText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-                                <AppBarButton x:Name="ValidChronoButtonv" Tag="{Binding}" HorizontalAlignment="Left" Icon="Accept" Margin="0,31,0,-10" Height="58" Width="65" VerticalAlignment="Bottom" Click="ValidChronoButtonv_Click" >
-                                    <AppBarButton.RenderTransform>
-                                        <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
+                                <AppBarButton x:Name="ValidChronoButtonv" Tag="{Binding}" Grid.Column="0" Grid.Row="2" Icon="Accept" Height="50" Width="50" IsCompact="True" Click="ValidChronoButtonv_Click" >
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="ValiderText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
-
-                                    <AppBarButton x:Name="SupChronoButton" Tag="{Binding}" HorizontalAlignment="Right" Icon="Cancel" Margin="0,0,60,-10" Height="58" Width="65" VerticalAlignment="Bottom" Click="SupChronoButton_Click"  Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
-                                        <AppBarButton.RenderTransform>
-                                            <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
-                                    </AppBarButton.RenderTransform>
+                                <AppBarButton x:Name="SupChronoButton" Tag="{Binding}" Grid.Column="3" Grid.Row="2" Icon="Cancel" Height="50" Width="50" IsCompact="True" Click="SupChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="SupprimerText"/>
                                     </ToolTipService.ToolTip>
