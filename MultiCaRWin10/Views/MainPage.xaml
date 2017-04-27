@@ -10,7 +10,7 @@
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
             <AppBarButton x:Uid="rateButton" x:Name="RateButton" Icon="Favorite" Click="RateButton_Click"/>
-            <AppBarButton x:Uid="bugsButton" x:Name="BugsButton" Icon="Mail" Click="BugsButton_Click"/>
+            <!--<AppBarButton x:Uid="bugsButton" x:Name="BugsButton" Icon="Mail" Click="BugsButton_Click"/>-->
             <AppBarButton x:Uid="appdButton" x:Name="AppdButton" Icon="Help" Click="AppdButton_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -95,21 +95,22 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock x:Name="TitreAfficherTextBlock" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding Titre,Mode=TwoWay}" FontSize="24" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}"/>
-                                <AppBarButton x:Name="EditTitreButton" Grid.Row="0" Grid.Column="4" Icon="Edit" IsCompact="True" Width="50" Height="50" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}" Tag="{Binding}" Click="OpenModifTitre_Click">
+                                <TextBlock x:Name="TitreAfficherTextBlock" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Titre,Mode=TwoWay}" FontSize="24" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}"/>
+                                <AppBarButton x:Name="EditTitreButton" Grid.Row="0" Grid.Column="5" Icon="Edit" IsCompact="True" Width="50" Height="50" Visibility="{Binding ModifTitreVisible, Converter={StaticResource InvertBoolConverter}}" Tag="{Binding}" Click="OpenModifTitre_Click">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="EditText"/>
                                     </ToolTipService.ToolTip>
                                 </AppBarButton>
 
-                                <TextBox x:Name="TitreAfficherTextBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding TitreTmp,Mode=TwoWay}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" VerticalAlignment="Center"/>
-                                <AppBarButton x:Name="ModifTitreButton" Grid.Row="0" Grid.Column="4" Icon="Accept" IsCompact="True" Width="50" Height="50" Tag="{Binding}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" Click="ModifTitreChrono_Click">
+                                <TextBox x:Name="TitreAfficherTextBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding TitreTmp,Mode=TwoWay}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" VerticalAlignment="Center"/>
+                                <AppBarButton x:Name="ModifTitreButton" Grid.Row="0" Grid.Column="5" Icon="Accept" IsCompact="True" Width="50" Height="50" Tag="{Binding}" Visibility="{Binding ModifTitreVisible, Converter={StaticResource Converter}}" Click="ModifTitreChrono_Click">
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="EditText"/>
                                     </ToolTipService.ToolTip>
@@ -117,8 +118,8 @@
 
                                 <TextBlock x:Name="IdChronoTextBlock" Grid.Row="1" Grid.Column="0" Foreground="{Binding ColorTimer}" Text="{Binding IdChrono}" TextWrapping="Wrap" Height="35" FontSize="30" Width="51"/>
                                
-                                <TextBlock x:Name="TempsChronoTextBlock" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Text="{Binding TimeToAffich}" VerticalAlignment="Center" Height="35" FontSize="23" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="TempsDiffTextBlock" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="{Binding IsFastestTimer, Converter={StaticResource ConverterColor}}" TextWrapping="Wrap" Text="{Binding NbSecondesDiff, Converter={StaticResource Converterms}}" VerticalAlignment="Bottom" Height="35" FontSize="20" Visibility="{Binding AffichNbSecondesDiff, Converter={StaticResource Converter}}" />
+                                <TextBlock x:Name="TempsChronoTextBlock" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Foreground="{Binding ColorTimer}" TextWrapping="Wrap" Text="{Binding TimeToAffich}" VerticalAlignment="Center" Height="35" FontSize="23" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TempsDiffTextBlock" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Foreground="{Binding IsFastestTimer, Converter={StaticResource ConverterColor}}" TextWrapping="Wrap" Text="{Binding NbSecondesDiff, Converter={StaticResource Converterms}}" VerticalAlignment="Bottom" Height="35" FontSize="20" Visibility="{Binding AffichNbSecondesDiff, Converter={StaticResource Converter}}" />
                                 
                                 <AppBarButton x:Name="MemChronoButton" Tag="{Binding}" Grid.Row="2" Grid.Column="4" Icon="Download" Height="50" Width="50" IsCompact="True" Click="MemChronoButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
                                     <ToolTipService.ToolTip>
@@ -144,7 +145,11 @@
                                     <ToolTipService.ToolTip>
                                         <TextBlock x:Uid="SupprimerText"/>
                                     </ToolTipService.ToolTip>
-
+                                </AppBarButton>
+                                <AppBarButton x:Name="ResetChronoButton" Tag="{Binding}" Grid.Column="5" Grid.Row="2" Icon="DisableUpdates" Height="50" Width="50" IsCompact="True" Click="ResetChronoTimeButton_Click" Visibility="{Binding IsParent, Converter={StaticResource Converter}}">
+                                    <ToolTipService.ToolTip>
+                                        <TextBlock x:Uid="ResetChronoTimeText"/>
+                                    </ToolTipService.ToolTip>
                                 </AppBarButton>
                             </Grid>
                         </DataTemplate>

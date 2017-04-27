@@ -172,6 +172,11 @@ namespace MultiCaRWin10.Views
         {
             await ViewModel.SaveChrono(((Button)sender).Tag as Chrono);
         }
+
+        private async void ResetChronoTimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.ResetChronoTime(((Button)sender).Tag as Chrono);
+        }
         #endregion
 
         private async void ModifTitreChrono_Click(object sender, RoutedEventArgs e)

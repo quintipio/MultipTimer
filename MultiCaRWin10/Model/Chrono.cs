@@ -132,6 +132,12 @@ namespace MultiCaRWin10.Model
             EnPause = true;
         }
 
+        public void ResetTime()
+        {
+            NbSecondes = 0;
+            Date = new DateTime();
+        }
+
         /// <summary>
         /// Controle les informations du chrono et les corriges si nécéssaire
         /// </summary>

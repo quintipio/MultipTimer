@@ -372,6 +372,24 @@ namespace MultiCaRWin10.ViewModel
         }
 
         /// <summary>
+        /// Remet à zéro un chronomètre
+        /// </summary>
+        /// <param name="chrono"></param>
+        /// <returns></returns>
+        public async Task ResetChronoTime(Chrono chrono)
+        {
+            await PauseChrono(chrono);
+
+            var liste = ListTimer.ListeChronos.Where(x => x.IdChrono == chrono.IdChrono && x.IsParent == false).ToList();
+            foreach (var ch in liste)
+            {
+                ListTimer.ListeChronos.Remove(ch);
+            }
+            chrono.ResetTime();
+            await ListTimer.SaveFile();
+        }
+
+        /// <summary>
         /// Modifie le titre d'un chrono et de tous ses sous chronos
         /// </summary>
         /// <param name="chrono">le chrono dont le titre est à modifier</param>

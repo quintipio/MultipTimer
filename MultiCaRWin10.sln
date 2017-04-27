@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiCaRWin10", "MultiCaRWin10\MultiCaRWin10.csproj", "{A8E79B52-B5C1-4C3E-83A4-C98E4743A4DE}"
+Project("") = "MultiCaRWin10", "MultiCaRWin10\MultiCaRWin10.csproj", ""
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

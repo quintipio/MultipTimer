@@ -263,4 +263,7 @@ Version 1.1 :
   <data name="ValiderText.Text" xml:space="preserve">
     <value>Valider</value>
   </data>
+  <data name="ResetChronoTimeText.Text" xml:space="preserve">
+    <value>Remettre à 0</value>
+  </data>
 </root>

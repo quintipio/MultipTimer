@@ -15,20 +15,20 @@ namespace MultiCaRWin10.Context
         /// <summary>
         /// adresse de support
         /// </summary>
-        public const string Support = "XXXX@XX.XX";
+        public const string Support = "";
 
         /// <summary>
         /// version de l'application
         /// </summary>
-        public const string Version = "2.2.0";
+        public const string Version = "2.3.1";
 
         /// <summary>
         /// nom du développeur
         /// </summary>
-        public const string Developpeur = "XXXX";
+        public const string Developpeur = "";
 
         /// <summary>
-        /// le nom par défaut du fichier 
+        /// le nom par défaut du fichier
         /// </summary>
         public const string NomFichier = "listeChrono";
 
@@ -36,7 +36,7 @@ namespace MultiCaRWin10.Context
         /// l'extension par défaut
         /// </summary>
         public const string Extension = "car";
-        
+
         /// <summary>
         /// Intervalle en Ms entre deux éxécution du Timer
         /// </summary>
